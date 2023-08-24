@@ -1,23 +1,24 @@
 #define _USE_MATH_DEFINES
-#include"shape.h"
-#include<cmath>
-Shape::Shape(int _type, int _x1, int _y1, int _z1, int _x2, int _y2, int _z2, int _x3, int _y3, int _z3, int _x4, int _y4, int _z4, int _x5, int _y5, int _z5, int _x6, int _y6, int _z6, int _x7, int _y7, int _z7, int _x8, int _y8, int _z8)
+#include "shape.h"
+#include <cmath>
+
+Shape::Shape(TYPE _type, int _x1, int _y1, int _z1, int _x2, int _y2, int _z2, int _x3, int _y3, int _z3, int _x4, int _y4, int _z4, int _x5, int _y5, int _z5, int _x6, int _y6, int _z6, int _x7, int _y7, int _z7, int _x8, int _y8, int _z8)
 {
 	type = _type;
 	// заполн¤ем координаты фигуры
 	switch (type)
 	{
-	case line: 
+	case TYPE::line: 
 		x1 = _x1; y1 = _y1;
 		x2 = _x2; y2 = _y2;
 		break;
-	case sqr:
+	case TYPE::sqr:
 		x1 = _x1; y1 = _y1;
 		x2 = _x2; y2 = _y2;
 		x3 = _x3; y3 = _y3;
 		x4 = _x4; y4 = _y4;
 		break;
-	case cube:
+	case TYPE::cube:
 		x1 = _x1; y1 = _y1; z1 = _z1;
 		x2 = _x2; y2 = _y2; z2 = _z2;
 		x3 = _x3; y3 = _y3; z3 = _z3;
@@ -38,13 +39,13 @@ Shape::Shape(int _type, int _x1, int _y1, int _z1, int _x2, int _y2, int _z2, in
 	// считаем площадь фигуры
 	switch (type)
 	{
-	case line:
+	case TYPE::line:
 		square = 0;
 		break;
-	case sqr:
+	case TYPE::sqr:
 		square = a * b;
 		break;
-	case cube:
+	case TYPE::cube:
 		square = 2 * a * b + 2 * a * c + 2 * b * c;
 		break;
 	default:
@@ -54,13 +55,13 @@ Shape::Shape(int _type, int _x1, int _y1, int _z1, int _x2, int _y2, int _z2, in
 	// считаем объем фигуры
 	switch (type)
 	{
-	case line:
+	case TYPE::line:
 		volume = 0;
 		break;
-	case sqr:
+	case TYPE::sqr:
 		volume = 0;
 		break;
-	case cube:
+	case TYPE::cube:
 		volume = a * b * c;
 		break;
 	default:
@@ -69,16 +70,16 @@ Shape::Shape(int _type, int _x1, int _y1, int _z1, int _x2, int _y2, int _z2, in
 
 }
 
-Shape::Shape(int type, int _x1, int _y1, double R, double H)
+Shape::Shape(TYPE _type, int _x1, int _y1, double R, double H)
 {
 	// заполн¤ем координаты фигуры
 	switch (type)
 	{
-	case circle:
+	case TYPE::circle:
 		x1 = _x1; y1 = _y1;
 		radius = R;
 		break;
-	case cylinder:
+	case TYPE::cylinder:
 		x1 = _x1; y1 = _y1;
 		radius = R;
 		height = H;
@@ -90,10 +91,10 @@ Shape::Shape(int type, int _x1, int _y1, double R, double H)
 	// считаем площадь фигуры
 	switch (type)
 	{
-	case circle:
+	case TYPE::circle:
 		square = M_PI * R * R;
 		break;
-	case cylinder:
+	case TYPE::cylinder:
 		square = M_PI * R * R + 2 * R * height;
 		break;
 	default:
@@ -103,10 +104,10 @@ Shape::Shape(int type, int _x1, int _y1, double R, double H)
 	// считаем объем фигуры
 	switch (type)
 	{
-	case circle:
+	case TYPE::circle:
 		volume = 0;
 		break;
-	case cylinder:
+	case TYPE::cylinder:
 		volume = M_PI * R * R * height;
 		break;
 	default:
