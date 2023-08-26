@@ -1,145 +1,145 @@
-#include "transform.h"
+#include "transform.hpp"
 
-transform::transform(const Shape& sh)
-{
+template <typename T>
+transform<T>::transform(const T& sh) {
 	shape = sh;
 }
 
-Shape transform::shift(int m, int n, int k)
-{
+template <typename T>
+T transform<T>::shift(int m, int n, int k) {
 	switch (shape.getType())
 	{
 	case TYPE::line:
-		shape.x1 += m; shape.y1 += n;
-		shape.x2 += m; shape.y2 += n;
+		shape.points[0][0] += m; shape.points[0][1] += n;
+		shape.points[1][0] += m; shape.points[1][1] += n;
 		break;
 	case TYPE::sqr:
-		shape.x1 += m; shape.y1 += n;
-		shape.x2 += m; shape.y2 += n;
-		shape.x3 += m; shape.y3 += n;
-		shape.x4 += m; shape.y4 += n;
+		shape.points[0][0] += m; shape.points[0][1] += n;
+		shape.points[1][0] += m; shape.points[1][1] += n;
+		shape.points[2][0] += m; shape.points[2][1] += n;
+		shape.points[3][0] += m; shape.points[4][1] += n;
 		break;
 	case TYPE::cube:
-		shape.x1 += m; shape.y1 += n; shape.z1 += k;
-		shape.x2 += m; shape.y2 += n; shape.z2 += k;
-		shape.x3 += m; shape.y3 += n; shape.z3 += k;
-		shape.x4 += m; shape.y4 += n; shape.z4 += k;
-		shape.x5 += m; shape.y5 += n; shape.z5 += k;
-		shape.x6 += m; shape.y6 += n; shape.z6 += k;
-		shape.x7 += m; shape.y7 += n; shape.z7 += k;
-		shape.x8 += m; shape.y8 += n; shape.z8 += k;
+		shape.points[0][0] += m; shape.points[0][1] += n; shape.points[0][2] += k;
+		shape.points[1][0] += m; shape.points[1][1] += n; shape.points[1][2] += k;
+		shape.points[2][0] += m; shape.points[2][1] += n; shape.points[2][2] += k;
+		shape.points[3][0] += m; shape.points[3][1] += n; shape.points[3][2] += k;
+		shape.points[4][0] += m; shape.points[4][1] += n; shape.points[4][2] += k;
+		shape.points[5][0] += m; shape.points[5][1] += n; shape.points[5][2] += k;
+		shape.points[6][0] += m; shape.points[6][1] += n; shape.points[6][2] += k;
+		shape.points[7][0] += m; shape.points[7][1] += n; shape.points[7][2] += k;
 		break;
 	}
 	return shape;
 }
 
-Shape transform::scaleX(int a)
-{
+template <typename T>
+T transform<T>::scaleX(int a) {
 	switch (shape.getType())
 	{
 	case TYPE::line:
-		shape.x1 *= a;
-		shape.x2 *= a;
+		shape.points[0][0] *= a;
+		shape.points[1][0] *= a;
 		break;
 	case TYPE::sqr:
-		shape.x1 *= a;
-		shape.x2 *= a;
-		shape.x3 *= a;
-		shape.x4 *= a;
+		shape.points[0][0] *= a;
+		shape.points[1][0] *= a;
+		shape.points[2][0] *= a;
+		shape.points[3][0] *= a;
 		break;
 	case TYPE::cube:
-		shape.x1 *= a;
-		shape.x2 *= a;
-		shape.x3 *= a;
-		shape.x4 *= a;
-		shape.x5 *= a;
-		shape.x6 *= a;
-		shape.x7 *= a;
-		shape.x8 *= a;
+		shape.points[0][0] *= a;
+		shape.points[1][0] *= a;
+		shape.points[2][0] *= a;
+		shape.points[3][0] *= a;
+		shape.points[4][0] *= a;
+		shape.points[5][0] *= a;
+		shape.points[6][0] *= a;
+		shape.points[7][0] *= a;
 		break;
 	}
 	return shape;
 }
 
-Shape transform::scaleY(int d)
-{
+template <typename T>
+T transform<T>::scaleY(int d) {
 	switch (shape.getType())
 	{
 	case TYPE::line:
-		shape.y1 *= d;
-		shape.y2 *= d;
+		shape.points[0][1] *= d;
+		shape.points[1][1] *= d;
 		break;
 	case TYPE::sqr:
-		shape.y1 *= d;
-		shape.y2 *= d;
-		shape.y3 *= d;
-		shape.y4 *= d;
+		shape.points[0][1] *= d;
+		shape.points[1][1] *= d;
+		shape.points[2][1] *= d;
+		shape.points[3][1] *= d;
 		break;
 	case TYPE::cube:
-		shape.y1 *= d;
-		shape.y2 *= d;
-		shape.y3 *= d;
-		shape.y4 *= d;
-		shape.y5 *= d;
-		shape.y6 *= d;
-		shape.y7 *= d;
-		shape.y8 *= d;
+		shape.points[0][1] *= d;
+		shape.points[1][1] *= d;
+		shape.points[2][1] *= d;
+		shape.points[3][1] *= d;
+		shape.points[4][1] *= d;
+		shape.points[5][1] *= d;
+		shape.points[6][1] *= d;
+		shape.points[7][1] *= d;
 		break;
 	}
 	return shape;
 }
 
-Shape transform::scaleZ(int e)
-{
+template <typename T>
+T transform<T>::scaleZ(int e) {
 	switch (shape.getType())
 	{
 	case TYPE::line:
-		shape.z1 *= e;
-		shape.z2 *= e;
+		shape.points[0][2] *= e;
+		shape.points[1][2] *= e;
 		break;
 	case TYPE::sqr:
-		shape.z1 *= e;
-		shape.z2 *= e;
-		shape.z3 *= e;
-		shape.z4 *= e;
+		shape.points[0][2] *= e;
+		shape.points[1][2] *= e;
+		shape.points[2][2] *= e;
+		shape.points[3][2] *= e;
 		break;
 	case TYPE::cube:
-		shape.z1 *= e;
-		shape.y2 *= e;
-		shape.z3 *= e;
-		shape.z4 *= e;
-		shape.z5 *= e;
-		shape.z6 *= e;
-		shape.z7 *= e;
-		shape.z8 *= e;
+		shape.points[0][2] *= e;
+		shape.points[1][2] *= e;
+		shape.points[2][2] *= e;
+		shape.points[3][2] *= e;
+		shape.points[4][2] *= e;
+		shape.points[5][2] *= e;
+		shape.points[6][2] *= e;
+		shape.points[7][2] *= e;
 		break;
 	}
 	return shape;
 }
 
-Shape transform::scale(int s)
-{
+template <typename T>
+T transform<T>::scale(int s) {
 	switch (shape.getType())
 	{
 	case TYPE::line:
-		shape.x1 /= s; shape.y1 /= s;
-		shape.x2 /= s; shape.y2 /= s;
+		shape.points[0][0] /= s; shape.points[0][1] /= s;
+		shape.points[1][0] /= s; shape.points[1][1] /= s;
 		break;
 	case TYPE::sqr:
-		shape.x1 /= s; shape.y1 /= s;
-		shape.x2 /= s; shape.y2 /= s;
-		shape.x3 /= s; shape.y3 /= s;
-		shape.x4 /= s; shape.y4 /= s;
+		shape.points[0][0] /= s;  shape.points[0][1] /= s;
+		shape.points[1][0] /= s;  shape.points[1][1] /= s;
+		shape.points[2][0] /= s;  shape.points[2][1] /= s;
+		shape.points[3][0] /= s;  shape.points[3][1] /= s;
 		break;
 	case TYPE::cube:
-		shape.x1 /= s; shape.y1 /= s; shape.z1 /= s;
-		shape.x2 /= s; shape.y2 /= s; shape.z2 /= s;
-		shape.x3 /= s; shape.y3 /= s; shape.z3 /= s;
-		shape.x4 /= s; shape.y4 /= s; shape.z4 /= s;
-		shape.x5 /= s; shape.y5 /= s; shape.z5 /= s;
-		shape.x6 /= s; shape.y6 /= s; shape.z6 /= s;
-		shape.x7 /= s; shape.y7 /= s; shape.z7 /= s;
-		shape.x8 /= s; shape.y8 /= s; shape.z8 /= s;
+		shape.points[0][0] /= s; shape.points[0][1] /= s; shape.points[0][2] /= s;
+		shape.points[1][0] /= s; shape.points[1][1] /= s; shape.points[1][2] /= s;
+		shape.points[2][0] /= s; shape.points[2][1] /= s; shape.points[2][2] /= s;
+		shape.points[3][0] /= s; shape.points[3][1] /= s; shape.points[3][2] /= s;
+		shape.points[4][0] /= s; shape.points[4][1] /= s; shape.points[4][2] /= s;
+		shape.points[5][0] /= s; shape.points[5][1] /= s; shape.points[5][2] /= s;
+		shape.points[6][0] /= s; shape.points[6][1] /= s; shape.points[6][2] /= s;
+		shape.points[7][0] /= s; shape.points[7][1] /= s; shape.points[7][2] /= s;
 		break;
 	}
 
