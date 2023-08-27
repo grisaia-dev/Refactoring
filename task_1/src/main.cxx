@@ -10,7 +10,7 @@ int main(void) {
         std::vector<std::vector<int>> c(2, std::vector<int>(2));
         for (int i = 0; i < 2; ++i) {
             for (int j = 0; j < 2; ++j) {
-                c[i][j] = j;
+                c[i][j] = j + 4 * 2;
             }
         }
 
@@ -24,10 +24,7 @@ int main(void) {
         }
 
         transform<Line> g(b);
-        //b = g.shift(5, 5, 5);
-
-        std::cout << b.getType() << std::endl;
-
+        b = g.scale(3);
 
         for (const auto& points : b.points) {
             for (const auto& point : points) {

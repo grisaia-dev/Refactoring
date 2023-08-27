@@ -6,7 +6,6 @@ set(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/bin)
 
 set(SOURCE_F
 	${PROJECT_SOURCE_DIR}/lib/shape.cpp
-	${PROJECT_SOURCE_DIR}/lib/transform.cpp
 )
 
 set(HEADER_F
