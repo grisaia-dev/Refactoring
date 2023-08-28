@@ -12,7 +12,6 @@ public:
 	explicit Shape() = default;
 
 	void printPoints();
-
 	void shift(int x, int y);
 	void scaleX(int x);
 	void scaleY(int y);
@@ -81,6 +80,7 @@ public:
 	explicit Circle() = default;
 	Circle(int _x1, int _y1, double R);
 
+	void printPoints() = delete;
 	void scaleX(int x) = delete;
 	void scaleY(int y) = delete;
 	void scaleZ(int z) = delete;
@@ -99,6 +99,7 @@ public:
 	explicit Cylinder() = default;
 	Cylinder(int _x1, int _y1, double R, double H);
 
+	void printPoints() = delete;
 	void scaleX(int x) = delete;
 	void scaleY(int y) = delete;
 	void scaleZ(int z) = delete;
