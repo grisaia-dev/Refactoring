@@ -10,7 +10,6 @@ set(SOURCE_F
 
 set(HEADER_F
 	${PROJECT_SOURCE_DIR}/lib/shape.hpp
-	${PROJECT_SOURCE_DIR}/lib/transform.hpp
 )
 
 add_executable(${PROJECT_NAME} ${PROJECT_SOURCE_DIR}/src/main.cxx ${SOURCE_F} ${HEADER_F})
